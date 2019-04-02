@@ -1,0 +1,257 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+body{
+    /* font: 16px/1.5 normal normal;
+    font-weight: normal;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+    /* font-weight: 300; */
+    color: #efdab9;
+    background-color: #343233;
+    /**/
+    font-size: 62.5%;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "pnum";
+    font-variant-numeric: proportional-nums;
+}
+ul, ol{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.top-bar {
+    text-align: left;
+    padding: 5px 0;
+    background-color: #584b4f;
+    color: #efeae1;
+    font-size: 14px;
+    height: 43px;
+}
+.wrapper {
+    width: 860px;
+    margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    overflow: hidden;
+}
+.wrapper.no-pad {
+    padding-left: 0;
+    padding-right: 0;
+}
+.top-bar .navigation {
+    display: inline-block;
+}
+.navigation {
+    list-style-type: none;
+}
+.navigation li {
+    display: inline-block;
+    padding-right: 5px;
+    height: 33px;
+    vertical-align: top;
+}
+.navigation a {
+    padding: 5px;
+    display: inline-block;
+    transition: color 0.2s;
+    -o-transform: color 0.2s;
+    -moz-transform: color 0.2s;
+    -webkit-transition: color 0.2s;
+}
+/* span{
+    display: block;
+    font-size: 1.4em;
+    line-height: 2rem;
+    letter-spacing: .15em;
+    font-weight: 500;
+} */
+.floating-cards {
+    perspective: 1500px;
+    position: relative;
+    align-items: center;
+}
+figure {
+    justify-content: flex-start;
+    padding: 80px 0 80px 40px;
+    display: flex;
+    --codes-count: 5;
+    --transition-duration: 350ms;
+}
+figure .card {
+    position: relative;
+    width: 480px;
+    height: 360px;
+    /* transform: rotate3d(.5,-.866,0,15deg) rotateZ(1deg); */
+    box-shadow: 27.1px 62.5px 125px -25px rgba(50,50,93,.5),16.2px 37.5px 75px -37.5px rgba(0,0,0,.6);
+    background: #32325d;
+    display: flex;
+    flex-direction: column;
+}
+figure .tabs {
+    display: flex;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+figure .tabs li {
+    flex: 1 0 calc(100% / (var(--codes-count) + 1));
+    margin-left: -1px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #aab7c4;
+    text-align: center;
+    line-height: 50px;
+    white-space: nowrap;
+    background: #232341;
+    border: 1px solid #32325d;
+    border-bottom-color: #525f7f;
+    border-top: none;
+    cursor: pointer;
+    transition: all var(--transition-duration);
+}
+figure .tabs li.more {
+    font-size: 25px;
+    line-height: 38px;
+}
+figure .tabs li:last-child {
+    border-right: none;
+}
+figure .tabs li.active {
+    background: #32325d;
+    border-color: #525f7f;
+    border-bottom-color: transparent;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -10px 0 #232341;
+    position: relative;
+    z-index: 2;
+}
+figure .tabs li:hover {
+    transition-duration: .15s;
+    background: #19192e;
+    color: #fff;
+}
+.floating-cards > div {
+    position: absolute;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.code-container {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+figure .code-container::before {
+    left: 0;
+    background: linear-gradient(90deg,#32325d,rgba(50,50,93,0));
+}
+figure .code-container::after {
+    right: 0;
+    background: linear-gradient(270deg,#32325d,rgba(50,50,93,0));
+}
+figure .code-container::after, #developers figure .code-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    z-index: 2;
+}
+figure .code {
+    flex-grow: 1;
+    width: calc(100% * var(--codes-count));
+    display: flex;
+    transition: transform var(--transition-duration);
+}
+figure .code li.active {
+    opacity: 1;
+}
+figure .code li {
+    width: calc(100% / var(--codes-count));
+    padding: 25px 30px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity var(--transition-duration);
+}
+pre {
+    position: relative;
+    color: #e6ebf1;
+}
+code, pre {
+    font-family: Source Code Pro,Consolas,Menlo,monospace;
+}
+code .token.comment {
+    font-weight: 400;
+    color: #6b7c93;
+}
+.language-php .token.operator, code .token.atrule, code .token.keyword {
+    color: #7795f8;
+}
+.language-ruby .token.constant + .token.punctuation, .language-ruby .token.constant + .token.punctuation + .token.symbol, code.language-url, code .token.boolean, code .token.builtin, code .token.class-name, code .token.constant, code .token.function, code .token.namespace, code .token.url {
+    font-weight: 600;
+    color: #45b2e8;
+}
+code.language-html .token.attr-value > .punctuation:not(:first-child), code.language-markup .token.attr-value > .punctuation:not(:first-child), code .token.attr-value, code .token.macro, code .token.string, code .token.stripe, code .token.value {
+    font-weight: 400;
+    color: #3ecf8e;
+}
+code .token.number {
+    color: #f79a59;
+}
+code .token:not(.script) {
+    font-weight: 400;
+}
+code .token {
+    padding: 0;
+    margin: 0;
+}
+figure .libraries-callout {
+    --char-width: 0.6em;
+    --char-height: 18px;
+    display: flex;
+    line-height: var(--char-height);
+}
+figure .libraries-callout code {
+    width: 100%;
+    color: #6b7c93;
+    position: relative;
+    text-align: center;
+}
+figure .libraries-callout code::after, figure .libraries-callout code::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--char-width) / 2);
+    right: calc(var(--char-width) / 2);
+    top: calc(var(--char-height) / 2);
+    bottom: calc(var(--char-height) / 2);
+    box-shadow: inset 0 0 0 1.5px #6b7c93;
+    z-index: -1;
+}
+figure .shine {
+    background: linear-gradient(to top left,hsla(0,0%,100%,0) 20%,hsla(0,0%,100%,.5) 70%,#fff);
+    opacity: .2;
+    z-index: 10;
+}
+.floating-cards .shine {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+}
